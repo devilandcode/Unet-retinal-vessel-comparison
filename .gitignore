@@ -1,0 +1,38 @@
+__pycache__/
+*.py[cod]
+*$py.class
+.DS_Store
+.venv/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+
+# checkpoints and large artifacts
+checkpoints/
+*.pth
+*.pt
+*.ckpt
+
+# datasets (obtain from official sources; do not commit)
+Data/
+retina-blood-vessel/
+retina-blood-vessels/
+stare-images/
+stare-masks/
+chase-db1/
+CHASEDB1/
+CHASE_DB1/
+hrf/
+HRF/
+
+# figures live in the paper, not in this code pack
+results/**/*.png
+*.png
+*.jpg
+*.jpeg
+*.tif
+*.tiff
+*.gif
+*.ppm
+*.bmp

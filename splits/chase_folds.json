@@ -1,0 +1,456 @@
+{
+  "dataset": "chase",
+  "protocol": "patient-level-5-fold-cv-held-out-test",
+  "n_folds": 5,
+  "split_seed": 20260830,
+  "n_patients": 14,
+  "n_images": 28,
+  "n_train_pool_patients": 11,
+  "n_train_pool_images": 22,
+  "n_test_images": 6,
+  "grouping": "CHASE_DB1: 28 images from 14 children (both eyes). Patient id = numeric stem (Image_01L / Image_01R → 01); fellow eyes stay in the same split. No official test split. ~20% of patients held out (SPLIT_SEED); remaining patients: 5-fold CV. Masks: prefer 1stHO.",
+  "patients": [
+    "01",
+    "02",
+    "03",
+    "04",
+    "05",
+    "06",
+    "07",
+    "08",
+    "09",
+    "10",
+    "11",
+    "12",
+    "13",
+    "14"
+  ],
+  "train_pool_patients": [
+    "01",
+    "02",
+    "03",
+    "05",
+    "06",
+    "08",
+    "09",
+    "11",
+    "12",
+    "13",
+    "14"
+  ],
+  "test_patients": [
+    "04",
+    "07",
+    "10"
+  ],
+  "test_cases": [
+    "Image_04L",
+    "Image_04R",
+    "Image_07L",
+    "Image_07R",
+    "Image_10L",
+    "Image_10R"
+  ],
+  "cases": [
+    {
+      "case_id": "Image_01L",
+      "patient_id": "01",
+      "image": "Image_01L.jpg",
+      "mask": "Image_01L_1stHO.png"
+    },
+    {
+      "case_id": "Image_01R",
+      "patient_id": "01",
+      "image": "Image_01R.jpg",
+      "mask": "Image_01R_1stHO.png"
+    },
+    {
+      "case_id": "Image_02L",
+      "patient_id": "02",
+      "image": "Image_02L.jpg",
+      "mask": "Image_02L_1stHO.png"
+    },
+    {
+      "case_id": "Image_02R",
+      "patient_id": "02",
+      "image": "Image_02R.jpg",
+      "mask": "Image_02R_1stHO.png"
+    },
+    {
+      "case_id": "Image_03L",
+      "patient_id": "03",
+      "image": "Image_03L.jpg",
+      "mask": "Image_03L_1stHO.png"
+    },
+    {
+      "case_id": "Image_03R",
+      "patient_id": "03",
+      "image": "Image_03R.jpg",
+      "mask": "Image_03R_1stHO.png"
+    },
+    {
+      "case_id": "Image_04L",
+      "patient_id": "04",
+      "image": "Image_04L.jpg",
+      "mask": "Image_04L_1stHO.png"
+    },
+    {
+      "case_id": "Image_04R",
+      "patient_id": "04",
+      "image": "Image_04R.jpg",
+      "mask": "Image_04R_1stHO.png"
+    },
+    {
+      "case_id": "Image_05L",
+      "patient_id": "05",
+      "image": "Image_05L.jpg",
+      "mask": "Image_05L_1stHO.png"
+    },
+    {
+      "case_id": "Image_05R",
+      "patient_id": "05",
+      "image": "Image_05R.jpg",
+      "mask": "Image_05R_1stHO.png"
+    },
+    {
+      "case_id": "Image_06L",
+      "patient_id": "06",
+      "image": "Image_06L.jpg",
+      "mask": "Image_06L_1stHO.png"
+    },
+    {
+      "case_id": "Image_06R",
+      "patient_id": "06",
+      "image": "Image_06R.jpg",
+      "mask": "Image_06R_1stHO.png"
+    },
+    {
+      "case_id": "Image_07L",
+      "patient_id": "07",
+      "image": "Image_07L.jpg",
+      "mask": "Image_07L_1stHO.png"
+    },
+    {
+      "case_id": "Image_07R",
+      "patient_id": "07",
+      "image": "Image_07R.jpg",
+      "mask": "Image_07R_1stHO.png"
+    },
+    {
+      "case_id": "Image_08L",
+      "patient_id": "08",
+      "image": "Image_08L.jpg",
+      "mask": "Image_08L_1stHO.png"
+    },
+    {
+      "case_id": "Image_08R",
+      "patient_id": "08",
+      "image": "Image_08R.jpg",
+      "mask": "Image_08R_1stHO.png"
+    },
+    {
+      "case_id": "Image_09L",
+      "patient_id": "09",
+      "image": "Image_09L.jpg",
+      "mask": "Image_09L_1stHO.png"
+    },
+    {
+      "case_id": "Image_09R",
+      "patient_id": "09",
+      "image": "Image_09R.jpg",
+      "mask": "Image_09R_1stHO.png"
+    },
+    {
+      "case_id": "Image_10L",
+      "patient_id": "10",
+      "image": "Image_10L.jpg",
+      "mask": "Image_10L_1stHO.png"
+    },
+    {
+      "case_id": "Image_10R",
+      "patient_id": "10",
+      "image": "Image_10R.jpg",
+      "mask": "Image_10R_1stHO.png"
+    },
+    {
+      "case_id": "Image_11L",
+      "patient_id": "11",
+      "image": "Image_11L.jpg",
+      "mask": "Image_11L_1stHO.png"
+    },
+    {
+      "case_id": "Image_11R",
+      "patient_id": "11",
+      "image": "Image_11R.jpg",
+      "mask": "Image_11R_1stHO.png"
+    },
+    {
+      "case_id": "Image_12L",
+      "patient_id": "12",
+      "image": "Image_12L.jpg",
+      "mask": "Image_12L_1stHO.png"
+    },
+    {
+      "case_id": "Image_12R",
+      "patient_id": "12",
+      "image": "Image_12R.jpg",
+      "mask": "Image_12R_1stHO.png"
+    },
+    {
+      "case_id": "Image_13L",
+      "patient_id": "13",
+      "image": "Image_13L.jpg",
+      "mask": "Image_13L_1stHO.png"
+    },
+    {
+      "case_id": "Image_13R",
+      "patient_id": "13",
+      "image": "Image_13R.jpg",
+      "mask": "Image_13R_1stHO.png"
+    },
+    {
+      "case_id": "Image_14L",
+      "patient_id": "14",
+      "image": "Image_14L.jpg",
+      "mask": "Image_14L_1stHO.png"
+    },
+    {
+      "case_id": "Image_14R",
+      "patient_id": "14",
+      "image": "Image_14R.jpg",
+      "mask": "Image_14R_1stHO.png"
+    }
+  ],
+  "folds": [
+    {
+      "fold": 0,
+      "train_patients": [
+        "01",
+        "02",
+        "05",
+        "06",
+        "09",
+        "11",
+        "13",
+        "14"
+      ],
+      "val_patients": [
+        "03",
+        "08",
+        "12"
+      ],
+      "train_cases": [
+        "Image_01L",
+        "Image_01R",
+        "Image_02L",
+        "Image_02R",
+        "Image_05L",
+        "Image_05R",
+        "Image_06L",
+        "Image_06R",
+        "Image_09L",
+        "Image_09R",
+        "Image_11L",
+        "Image_11R",
+        "Image_13L",
+        "Image_13R",
+        "Image_14L",
+        "Image_14R"
+      ],
+      "val_cases": [
+        "Image_03L",
+        "Image_03R",
+        "Image_08L",
+        "Image_08R",
+        "Image_12L",
+        "Image_12R"
+      ],
+      "n_train_images": 16,
+      "n_val_images": 6
+    },
+    {
+      "fold": 1,
+      "train_patients": [
+        "01",
+        "03",
+        "05",
+        "06",
+        "08",
+        "09",
+        "11",
+        "12",
+        "13"
+      ],
+      "val_patients": [
+        "02",
+        "14"
+      ],
+      "train_cases": [
+        "Image_01L",
+        "Image_01R",
+        "Image_03L",
+        "Image_03R",
+        "Image_05L",
+        "Image_05R",
+        "Image_06L",
+        "Image_06R",
+        "Image_08L",
+        "Image_08R",
+        "Image_09L",
+        "Image_09R",
+        "Image_11L",
+        "Image_11R",
+        "Image_12L",
+        "Image_12R",
+        "Image_13L",
+        "Image_13R"
+      ],
+      "val_cases": [
+        "Image_02L",
+        "Image_02R",
+        "Image_14L",
+        "Image_14R"
+      ],
+      "n_train_images": 18,
+      "n_val_images": 4
+    },
+    {
+      "fold": 2,
+      "train_patients": [
+        "01",
+        "02",
+        "03",
+        "06",
+        "08",
+        "09",
+        "12",
+        "13",
+        "14"
+      ],
+      "val_patients": [
+        "05",
+        "11"
+      ],
+      "train_cases": [
+        "Image_01L",
+        "Image_01R",
+        "Image_02L",
+        "Image_02R",
+        "Image_03L",
+        "Image_03R",
+        "Image_06L",
+        "Image_06R",
+        "Image_08L",
+        "Image_08R",
+        "Image_09L",
+        "Image_09R",
+        "Image_12L",
+        "Image_12R",
+        "Image_13L",
+        "Image_13R",
+        "Image_14L",
+        "Image_14R"
+      ],
+      "val_cases": [
+        "Image_05L",
+        "Image_05R",
+        "Image_11L",
+        "Image_11R"
+      ],
+      "n_train_images": 18,
+      "n_val_images": 4
+    },
+    {
+      "fold": 3,
+      "train_patients": [
+        "02",
+        "03",
+        "05",
+        "06",
+        "08",
+        "11",
+        "12",
+        "13",
+        "14"
+      ],
+      "val_patients": [
+        "01",
+        "09"
+      ],
+      "train_cases": [
+        "Image_02L",
+        "Image_02R",
+        "Image_03L",
+        "Image_03R",
+        "Image_05L",
+        "Image_05R",
+        "Image_06L",
+        "Image_06R",
+        "Image_08L",
+        "Image_08R",
+        "Image_11L",
+        "Image_11R",
+        "Image_12L",
+        "Image_12R",
+        "Image_13L",
+        "Image_13R",
+        "Image_14L",
+        "Image_14R"
+      ],
+      "val_cases": [
+        "Image_01L",
+        "Image_01R",
+        "Image_09L",
+        "Image_09R"
+      ],
+      "n_train_images": 18,
+      "n_val_images": 4
+    },
+    {
+      "fold": 4,
+      "train_patients": [
+        "01",
+        "02",
+        "03",
+        "05",
+        "08",
+        "09",
+        "11",
+        "12",
+        "14"
+      ],
+      "val_patients": [
+        "06",
+        "13"
+      ],
+      "train_cases": [
+        "Image_01L",
+        "Image_01R",
+        "Image_02L",
+        "Image_02R",
+        "Image_03L",
+        "Image_03R",
+        "Image_05L",
+        "Image_05R",
+        "Image_08L",
+        "Image_08R",
+        "Image_09L",
+        "Image_09R",
+        "Image_11L",
+        "Image_11R",
+        "Image_12L",
+        "Image_12R",
+        "Image_14L",
+        "Image_14R"
+      ],
+      "val_cases": [
+        "Image_06L",
+        "Image_06R",
+        "Image_13L",
+        "Image_13R"
+      ],
+      "n_train_images": 18,
+      "n_val_images": 4
+    }
+  ]
+}

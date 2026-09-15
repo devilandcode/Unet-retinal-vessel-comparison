@@ -1,0 +1,390 @@
+{
+  "dataset": "stare",
+  "protocol": "patient-level-5-fold-cv-held-out-test",
+  "n_folds": 5,
+  "split_seed": 20260830,
+  "n_patients": 16,
+  "n_images": 20,
+  "n_train_pool_patients": 13,
+  "n_train_pool_images": 16,
+  "n_test_images": 4,
+  "grouping": "STARE Hoover vessel subset: no official test split. ~20% of patients held out as a fixed test set (SPLIT_SEED); fellow-eye pairs im0081/82, im0162/63, im0235/36, im0239/40 share a patient id and stay entirely in test or train-pool. Remaining patients: 5-fold CV.",
+  "patients": [
+    "im0001",
+    "im0002",
+    "im0003",
+    "im0004",
+    "im0005",
+    "im0044",
+    "im0077",
+    "im0081",
+    "im0139",
+    "im0162",
+    "im0235",
+    "im0239",
+    "im0255",
+    "im0291",
+    "im0319",
+    "im0324"
+  ],
+  "train_pool_patients": [
+    "im0001",
+    "im0002",
+    "im0003",
+    "im0005",
+    "im0044",
+    "im0077",
+    "im0081",
+    "im0162",
+    "im0239",
+    "im0255",
+    "im0291",
+    "im0319",
+    "im0324"
+  ],
+  "test_patients": [
+    "im0004",
+    "im0139",
+    "im0235"
+  ],
+  "test_cases": [
+    "im0004",
+    "im0139",
+    "im0235",
+    "im0236"
+  ],
+  "cases": [
+    {
+      "case_id": "im0001",
+      "patient_id": "im0001",
+      "image": "im0001.ppm",
+      "mask": "im0001.ppm"
+    },
+    {
+      "case_id": "im0002",
+      "patient_id": "im0002",
+      "image": "im0002.ppm",
+      "mask": "im0002.ppm"
+    },
+    {
+      "case_id": "im0003",
+      "patient_id": "im0003",
+      "image": "im0003.ppm",
+      "mask": "im0003.ppm"
+    },
+    {
+      "case_id": "im0004",
+      "patient_id": "im0004",
+      "image": "im0004.ppm",
+      "mask": "im0004.ppm"
+    },
+    {
+      "case_id": "im0005",
+      "patient_id": "im0005",
+      "image": "im0005.ppm",
+      "mask": "im0005.ppm"
+    },
+    {
+      "case_id": "im0044",
+      "patient_id": "im0044",
+      "image": "im0044.ppm",
+      "mask": "im0044.ppm"
+    },
+    {
+      "case_id": "im0077",
+      "patient_id": "im0077",
+      "image": "im0077.ppm",
+      "mask": "im0077.ppm"
+    },
+    {
+      "case_id": "im0081",
+      "patient_id": "im0081",
+      "image": "im0081.ppm",
+      "mask": "im0081.ppm"
+    },
+    {
+      "case_id": "im0082",
+      "patient_id": "im0081",
+      "image": "im0082.ppm",
+      "mask": "im0082.ppm"
+    },
+    {
+      "case_id": "im0139",
+      "patient_id": "im0139",
+      "image": "im0139.ppm",
+      "mask": "im0139.ppm"
+    },
+    {
+      "case_id": "im0162",
+      "patient_id": "im0162",
+      "image": "im0162.ppm",
+      "mask": "im0162.ppm"
+    },
+    {
+      "case_id": "im0163",
+      "patient_id": "im0162",
+      "image": "im0163.ppm",
+      "mask": "im0163.ppm"
+    },
+    {
+      "case_id": "im0235",
+      "patient_id": "im0235",
+      "image": "im0235.ppm",
+      "mask": "im0235.ppm"
+    },
+    {
+      "case_id": "im0236",
+      "patient_id": "im0235",
+      "image": "im0236.ppm",
+      "mask": "im0236.ppm"
+    },
+    {
+      "case_id": "im0239",
+      "patient_id": "im0239",
+      "image": "im0239.ppm",
+      "mask": "im0239.ppm"
+    },
+    {
+      "case_id": "im0240",
+      "patient_id": "im0239",
+      "image": "im0240.ppm",
+      "mask": "im0240.ppm"
+    },
+    {
+      "case_id": "im0255",
+      "patient_id": "im0255",
+      "image": "im0255.ppm",
+      "mask": "im0255.ppm"
+    },
+    {
+      "case_id": "im0291",
+      "patient_id": "im0291",
+      "image": "im0291.ppm",
+      "mask": "im0291.ppm"
+    },
+    {
+      "case_id": "im0319",
+      "patient_id": "im0319",
+      "image": "im0319.ppm",
+      "mask": "im0319.ppm"
+    },
+    {
+      "case_id": "im0324",
+      "patient_id": "im0324",
+      "image": "im0324.ppm",
+      "mask": "im0324.ppm"
+    }
+  ],
+  "folds": [
+    {
+      "fold": 0,
+      "train_patients": [
+        "im0002",
+        "im0003",
+        "im0005",
+        "im0044",
+        "im0081",
+        "im0162",
+        "im0255",
+        "im0291",
+        "im0319",
+        "im0324"
+      ],
+      "val_patients": [
+        "im0001",
+        "im0077",
+        "im0239"
+      ],
+      "train_cases": [
+        "im0002",
+        "im0003",
+        "im0005",
+        "im0044",
+        "im0081",
+        "im0082",
+        "im0162",
+        "im0163",
+        "im0255",
+        "im0291",
+        "im0319",
+        "im0324"
+      ],
+      "val_cases": [
+        "im0001",
+        "im0077",
+        "im0239",
+        "im0240"
+      ],
+      "n_train_images": 12,
+      "n_val_images": 4
+    },
+    {
+      "fold": 1,
+      "train_patients": [
+        "im0001",
+        "im0002",
+        "im0003",
+        "im0077",
+        "im0081",
+        "im0162",
+        "im0239",
+        "im0255",
+        "im0291",
+        "im0324"
+      ],
+      "val_patients": [
+        "im0005",
+        "im0044",
+        "im0319"
+      ],
+      "train_cases": [
+        "im0001",
+        "im0002",
+        "im0003",
+        "im0077",
+        "im0081",
+        "im0082",
+        "im0162",
+        "im0163",
+        "im0239",
+        "im0240",
+        "im0255",
+        "im0291",
+        "im0324"
+      ],
+      "val_cases": [
+        "im0005",
+        "im0044",
+        "im0319"
+      ],
+      "n_train_images": 13,
+      "n_val_images": 3
+    },
+    {
+      "fold": 2,
+      "train_patients": [
+        "im0001",
+        "im0002",
+        "im0005",
+        "im0044",
+        "im0077",
+        "im0162",
+        "im0239",
+        "im0255",
+        "im0319",
+        "im0324"
+      ],
+      "val_patients": [
+        "im0003",
+        "im0081",
+        "im0291"
+      ],
+      "train_cases": [
+        "im0001",
+        "im0002",
+        "im0005",
+        "im0044",
+        "im0077",
+        "im0162",
+        "im0163",
+        "im0239",
+        "im0240",
+        "im0255",
+        "im0319",
+        "im0324"
+      ],
+      "val_cases": [
+        "im0003",
+        "im0081",
+        "im0082",
+        "im0291"
+      ],
+      "n_train_images": 12,
+      "n_val_images": 4
+    },
+    {
+      "fold": 3,
+      "train_patients": [
+        "im0001",
+        "im0003",
+        "im0005",
+        "im0044",
+        "im0077",
+        "im0081",
+        "im0162",
+        "im0239",
+        "im0255",
+        "im0291",
+        "im0319"
+      ],
+      "val_patients": [
+        "im0002",
+        "im0324"
+      ],
+      "train_cases": [
+        "im0001",
+        "im0003",
+        "im0005",
+        "im0044",
+        "im0077",
+        "im0081",
+        "im0082",
+        "im0162",
+        "im0163",
+        "im0239",
+        "im0240",
+        "im0255",
+        "im0291",
+        "im0319"
+      ],
+      "val_cases": [
+        "im0002",
+        "im0324"
+      ],
+      "n_train_images": 14,
+      "n_val_images": 2
+    },
+    {
+      "fold": 4,
+      "train_patients": [
+        "im0001",
+        "im0002",
+        "im0003",
+        "im0005",
+        "im0044",
+        "im0077",
+        "im0081",
+        "im0239",
+        "im0291",
+        "im0319",
+        "im0324"
+      ],
+      "val_patients": [
+        "im0162",
+        "im0255"
+      ],
+      "train_cases": [
+        "im0001",
+        "im0002",
+        "im0003",
+        "im0005",
+        "im0044",
+        "im0077",
+        "im0081",
+        "im0082",
+        "im0239",
+        "im0240",
+        "im0291",
+        "im0319",
+        "im0324"
+      ],
+      "val_cases": [
+        "im0162",
+        "im0163",
+        "im0255"
+      ],
+      "n_train_images": 13,
+      "n_val_images": 3
+    }
+  ]
+}
