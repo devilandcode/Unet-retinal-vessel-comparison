@@ -1,28 +1,28 @@
-# Сравнение U-Net, U-Net++ и Attention U-Net на сосудах сетчатки
+# Comparing U-Net, U-Net++, and Attention U-Net on Retinal Vessels
 
-Открытый код эксперимента к отчёту: единое сравнение трёх архитектур семейства U-Net на четырёх общедоступных коллекциях цветных снимков глазного дна. Репозиторий позволяет проверить протокол разбиения, повторить обучение и сверить опубликованные числа в JSON. Наборы изображений **не прилагаются**.
+Open experiment code accompanying the report: a single comparison of three U-Net-family architectures on four public collections of color fundus photographs. The repository lets you check the split protocol, rerun training, and match the published figures in JSON. The image collections **are not included**.
 
-## Архитектуры и наборы
+## Architectures and datasets
 
-| Архитектура | Скрипт (DRIVE) | STARE | CHASE_DB1 | HRF |
-|-------------|----------------|-------|-----------|-----|
+| Architecture | Script (DRIVE) | STARE | CHASE_DB1 | HRF |
+|--------------|----------------|-------|-----------|-----|
 | U-Net | `u-net.py` | `u-net-stare.py` | `u-net-chase.py` | `u-net-hrf.py` |
 | U-Net++ | `u-net-plus-plus.py` | `u-net-plus-plus-stare.py` | `u-net-plus-plus-chase.py` | `u-net-plus-plus-hrf.py` |
 | Attention U-Net | `attention-u-net.py` | `attention-u-net-stare.py` | `attention-u-net-chase.py` | `attention-u-net-hrf.py` |
 
-Кодировщик у всех трёх моделей — ResNet-34 с предварительным обучением на ImageNet; различаются только декодирующие тракты. Вход — 768×768, три цветовых канала. Функция потерь, аугментации и гиперпараметры общие (`common/config.py`).
+All three models use a ResNet-34 encoder pretrained on ImageNet; only the decoder paths differ. Inputs are 768×768 with three color channels. The loss, augmentations, and hyperparameters are shared (`common/config.py`).
 
-## Протокол оценки
+## Evaluation protocol
 
-1. **Единица разбиения — пациент.** Парные глаза одного человека не разводятся по обучающему, проверочному и тестовому подмножествам.
-2. **Отложенная контрольная выборка** формируется один раз и не участвует в обучении, в ранней остановке и в выборе гиперпараметров.
-3. **Пятиблочная перекрёстная проверка** проводится только на обучающем пуле. Каждый из пяти циклов обучается **с нуля** со своей инициализацией параметров (`SPLIT_SEED + 1000 + номер блока`). Веса между циклами не переносятся.
-4. По пяти блокам сообщаются среднее, выборочное стандартное отклонение и двусторонний 95-процентный доверительный интервал (распределение Стьюдента, четыре степени свободы).
-5. **Финальная оценка на отложенной выборке — однократная.** После пяти циклов модель один раз обучается на полном обучающем пуле (бюджет эпох — медиана по блокам, без ранней остановки) и один раз оценивается на тесте. Повторов финального прогона нет, поэтому у тестовых мер нет среднего ± стандартное отклонение.
+1. **The split unit is the patient.** Both eyes of the same person stay together and are never placed in different train, validation, and test subsets.
+2. **The held-out test set** is formed once and is not used for training, early stopping, or hyperparameter selection.
+3. **Five-fold cross-validation** runs only on the training pool. Each of the five folds is trained **from scratch** with its own parameter initialization (`SPLIT_SEED + 1000 + fold index`). Weights are not carried over between folds.
+4. Across the five folds we report the mean, the sample standard deviation, and a two-sided 95% confidence interval (Student’s t distribution, four degrees of freedom).
+5. **The final evaluation on the held-out set is a single run.** After the five folds, the model is trained once on the full training pool (epoch budget equal to the median across folds, with no early stopping) and evaluated once on the test set. There is no repeated final run, so the test metrics have no mean ± standard deviation.
 
-## Установка
+## Setup
 
-Нужны Python 3.10+ и, для полного обучения, графический ускоритель с CUDA.
+You need Python 3.10+ and, for full training, a CUDA GPU.
 
 ```bash
 python -m venv .venv
@@ -30,62 +30,62 @@ source .venv/bin/activate   # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-Пакет `kagglehub` нужен только если вы хотите скачать публичные копии через Kaggle. Можно обойтись локальными каталогами (см. ниже). Секретные ключи в репозиторий не входят; если пользуетесь Kaggle API, настройте его самостоятельно по документации Kaggle.
+The `kagglehub` package is needed only if you want to download public copies through Kaggle. Local directories work just as well (see below). Secrets are not stored in the repository; if you use the Kaggle API, configure it yourself following the Kaggle documentation.
 
-Проверка протокола разбиения (без данных и без обучения):
+Check the split protocol (no data and no training):
 
 ```bash
 python -m unittest tests.test_protocol
 ```
 
-## Данные: где взять и куда положить
+## Data: where to get it and where to put it
 
-Наборы **не распространяются** вместе с кодом. Получите их у правообладателей и укажите путь.
+The datasets **are not distributed** with the code. Obtain them from the rights holders and point the scripts at the path.
 
 ### DRIVE
 
-Как указать данные:
+How to point at the data:
 
-- переменная окружения `DRIVE_ROOT` — корень каталога, в котором есть `train/image` + `train/mask` и `test/image` + `test/mask` (или `Data/train/...`, `Data/test/...`);
-- либо официальная раскладка `training/images` + `training/1st_manual` и `test/images` + `test/1st_manual` — код её тоже читает, но тогда число файлов будет 40, и сохранённый `drive_folds.json` на 100 кадров **не подойдёт**: его нужно удалить и пересоздать (`python u-net.py --splits-only`).
+- the `DRIVE_ROOT` environment variable — the root of a directory that contains `train/image` + `train/mask` and `test/image` + `test/mask` (or `Data/train/...`, `Data/test/...`);
+- or the official layout `training/images` + `training/1st_manual` and `test/images` + `test/1st_manual` — the code reads that too, but then the file count is 40 and the saved `drive_folds.json` for 100 frames **will not match**: delete it and recreate it (`python u-net.py --splits-only`).
 
 ### STARE
 
-Сосудистый поднабор Hoover: 20 аннотированных кадров. Положите изображения в `./stare-images`, маски — в `./stare-masks`, либо задайте `STARE_IMAGES_DIR` и `STARE_MASKS_DIR`.
+Hoover’s vessel subset: 20 annotated frames. Put the images in `./stare-images` and the masks in `./stare-masks`, or set `STARE_IMAGES_DIR` and `STARE_MASKS_DIR`.
 
 ### CHASE_DB1
 
-28 снимков 14 детей. Переменная `CHASE_ROOT` или каталог `./chase-db1`. Предпочтительны маски первого наблюдателя (`*1stHO*`).
+28 images from 14 children. Use the `CHASE_ROOT` variable or the `./chase-db1` directory. Masks from the first observer (`*1stHO*`) are preferred.
 
 ### HRF
 
-45 кадров (здоровые / глаукома / диабетическая ретинопатия) с **сосудистыми** масками (`manual1` и т. п.), не масками поля зрения. `HRF_ROOT` или `HRF_IMAGES_DIR` + `HRF_MASKS_DIR`.
+45 frames (healthy / glaucoma / diabetic retinopathy) with **vessel** masks (`manual1` and similar), not field-of-view masks. Use `HRF_ROOT`, or `HRF_IMAGES_DIR` together with `HRF_MASKS_DIR`.
 
-## Как гарантируется одинаковое разбиение у трёх архитектур
+## How the three architectures share the same split
 
-Файлы `splits/*.json` фиксируют состав обучающего пула, отложенного теста и пяти блоков. Все три архитектуры читают один и тот же файл набора. Пока файл на месте, сравнение идёт по идентичным пациентам, а не по разным случайным делениям.
+The files in `splits/*.json` fix the training pool, the held-out test set, and the five folds. All three architectures read the same file for a given dataset. As long as that file is present, the comparison uses the same patients, not different random partitions.
 
-- `split_seed` во всех файлах равен `20260830`.
-- Для STARE, CHASE_DB1 и HRF отложенный тест — около 20 % пациентов при том же значении инициализации разбиения; парные глаза удерживаются вместе.
-- Для DRIVE тест берётся из каталога `test` (в использованной копии — 20 файлов), обучающий пул — из `train` (80 файлов).
+- `split_seed` is `20260830` in every file.
+- For STARE, CHASE_DB1, and HRF the held-out test set is about 20% of patients at the same split seed; paired eyes stay together.
+- For DRIVE the test set comes from the `test` directory (20 files in the copy used here) and the training pool from `train` (80 files).
 
-Если вы удалите JSON разбиения, скрипт пересоздаст его из текущих файлов на диске. Для воспроизведения **опубликованных** таблиц оставляйте файлы из `splits/`.
+If you delete a split JSON, the script rebuilds it from the files currently on disk. To reproduce the **published** tables, keep the files in `splits/`.
 
-## Как запустить обучение
+## How to run training
 
-Примеры (из корня репозитория, когда данные на месте):
+Examples (from the repository root, once the data is in place):
 
 ```bash
-python u-net.py                 # DRIVE, все пять блоков + один финальный тест
-python u-net.py --fold 0        # один блок
-python u-net.py --splits-only   # только записать/проверить разбиение
+python u-net.py                 # DRIVE, all five folds plus one final test
+python u-net.py --fold 0        # a single fold
+python u-net.py --splits-only   # only write or check the split
 python attention-u-net-stare.py
 python u-net-plus-plus-chase.py
 python u-net-hrf.py --max-epochs 1 --fold 0
 ```
 
-Результаты пишутся в `results/<набор>/<архитектура>-cv.json` и (локально) в PNG-коллажи. В этом пакете заранее положены только JSON опубликованного эксперимента — см. `results/README.md`.
+Results are written to `results/<dataset>/<architecture>-cv.json` and, locally, to PNG collages. This package ships only the JSON from the published experiment in advance — see `results/README.md`.
 
-## Лицензии данных
+## Data licenses
 
-Код можно использовать для проверки протокола. Изображения DRIVE, STARE, CHASE_DB1 и HRF принадлежат их правообладателям; скачивайте с официальных страниц коллекций и соблюдайте их условия. В репозиторий они не входят.
+The code may be used to check the protocol. Images from DRIVE, STARE, CHASE_DB1, and HRF belong to their rights holders; download them from the official collection pages and follow their terms. They are not part of this repository.
